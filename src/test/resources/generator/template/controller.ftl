@@ -45,7 +45,7 @@ public class ${modelNameUpperCamel}Controller {
         return ResultGenerator.genSuccessResult(${modelNameLowerCamel});
     }
 
-    @PostMapping("/list")
+    @GetMapping("/list")
     public Result list(Integer page, Integer size) {
         PageHelper.startPage(page, size);
         List<${modelNameUpperCamel}> list = ${modelNameLowerCamel}Service.findAll();

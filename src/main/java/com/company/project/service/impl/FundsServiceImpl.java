@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -19,4 +21,10 @@ public class FundsServiceImpl extends AbstractService<Funds> implements FundsSer
     @Resource
     private FundsMapper fundsMapper;
 
+    @Override
+    public void save(Funds model) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSSS");
+        model.setDate(sdf.format(new Date()));
+        fundsMapper.insert(model);
+    }
 }
